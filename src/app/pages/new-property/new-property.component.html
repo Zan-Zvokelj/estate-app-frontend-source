@@ -1,0 +1,348 @@
+<div class="m-10 container">
+  <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
+    <!-- Property Title -->
+    <div class="mb-4">
+      <label for="title" class="block text-sm font-medium text-gray-700 mb-1"
+        >Property Title</label
+      >
+      <input
+        type="text"
+        id="title"
+        placeholder="Name of the property"
+        formControlName="title"
+        required
+        class="w-full border border-gray-300 rounded-lg shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      />
+      <div
+        *ngIf="
+          propertyForm.get('title')?.hasError('required') &&
+          propertyForm.get('title')?.touched
+        "
+        class="text-red-700"
+      ></div>
+      This property needs a title.
+    </div>
+
+    <!-- Property Address -->
+    <div class="mb-4">
+      <label for="address" class="block text-sm font-medium text-gray-700 mb-1"
+        >Property Address</label
+      >
+      <input
+        type="text"
+        id="address"
+        placeholder="Address of the property"
+        formControlName="address"
+        required
+        class="w-full border border-gray-300 rounded-lg shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      />
+      <div
+        *ngIf="
+          propertyForm.get('address')?.hasError('required') &&
+          propertyForm.get('address')?.touched
+        "
+        class="text-red-700"
+      >
+        This property needs an address.
+      </div>
+    </div>
+
+    <!-- Property City -->
+    <div class="mb-4">
+      <label for="city" class="block text-sm font-medium text-gray-700 mb-1"
+        >Property City</label
+      >
+      <input
+        type="text"
+        id="city"
+        placeholder="City name of the property"
+        formControlName="city"
+        required
+        class="w-full border border-gray-300 rounded-lg shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      />
+      <div
+        *ngIf="
+          propertyForm.get('city')?.hasError('required') &&
+          propertyForm.get('city')?.touched
+        "
+        class="text-red-700"
+      >
+        This property needs a city.
+      </div>
+    </div>
+
+    <!-- Property State -->
+    <div class="mb-4">
+      <label for="state" class="block text-sm font-medium text-gray-700 mb-1"
+        >Property State</label
+      >
+      <input
+        type="text"
+        id="state"
+        placeholder="State of the property"
+        formControlName="state"
+        required
+        class="w-full border border-gray-300 rounded-lg shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      />
+      <div
+        *ngIf="
+          propertyForm.get('state')?.hasError('required') &&
+          propertyForm.get('state')?.touched
+        "
+        class="text-red-700"
+      >
+        This property needs a state.
+      </div>
+    </div>
+
+    <!-- Property Zipcode -->
+    <div class="mb-4">
+      <label for="zipcode" class="block text-sm font-medium text-gray-700 mb-1"
+        >Property Zipcode</label
+      >
+      <input
+        type="text"
+        id="zipcode"
+        placeholder="Zipcode of the property"
+        formControlName="zipcode"
+        required
+        class="w-full border border-gray-300 rounded-lg shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      />
+      <div
+        *ngIf="
+          propertyForm.get('zipcode')?.hasError('required') &&
+          propertyForm.get('zipcode')?.touched
+        "
+        class="text-red-700"
+      >
+        This property needs a zipcode.
+      </div>
+    </div>
+
+    <!-- Property Price -->
+    <div class="mb-4">
+      <label for="price" class="block text-sm font-medium text-gray-700 mb-1"
+        >Property Price</label
+      >
+      <div class="relative">
+        <span
+          class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500"
+          >$</span
+        >
+        <input
+          type="number"
+          id="price"
+          placeholder="Price of the property"
+          formControlName="price"
+          required
+          class="w-full pl-10 border border-gray-300 rounded-lg shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+      <div
+        *ngIf="
+          propertyForm.get('price')?.hasError('required') &&
+          propertyForm.get('price')?.touched
+        "
+        class="text-red-700"
+      >
+        This property needs a price.
+      </div>
+    </div>
+
+    <!-- Property Description -->
+    <div class="mb-4">
+      <label
+        for="description"
+        class="block text-sm font-medium text-gray-700 mb-1"
+        >Property Description</label
+      >
+      <textarea
+        id="description"
+        placeholder="Description of the property"
+        formControlName="description"
+        required
+        class="w-full border border-gray-300 rounded-lg shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      ></textarea>
+      <div
+        *ngIf="
+          propertyForm.get('description')?.hasError('required') &&
+          propertyForm.get('description')?.touched
+        "
+        class="text-red-700"
+      >
+        This property needs a description.
+      </div>
+    </div>
+
+    <!-- Property Area -->
+    <div class="mb-4">
+      <label for="area" class="block text-sm font-medium text-gray-700 mb-1"
+        >Property Area</label
+      >
+      <input
+        type="number"
+        id="area"
+        placeholder="Area of the property"
+        formControlName="area"
+        required
+        class="w-full border border-gray-300 rounded-lg shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      />
+      <div
+        *ngIf="
+          propertyForm.get('area')?.hasError('required') &&
+          propertyForm.get('area')?.touched
+        "
+        class="text-red-700"
+      >
+        This property needs an area.
+      </div>
+    </div>
+
+    <!-- Property Parking -->
+    <div class="mb-4">
+      <label for="parking" class="block text-sm font-medium text-gray-700 mb-1"
+        >Property Parking</label
+      >
+      <select
+        id="parking"
+        formControlName="parking"
+        required
+        class="w-full border border-gray-300 rounded-lg shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      >
+        <option *ngFor="let parking of parkings" [value]="parking">
+          {{ parking }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          propertyForm.get('parking')?.hasError('required') &&
+          propertyForm.get('parking')?.touched
+        "
+        class="text-red-700"
+      >
+        This property needs parking information.
+      </div>
+    </div>
+
+    <!-- Property Bedrooms -->
+    <div class="mb-4">
+      <label for="bedrooms" class="block text-sm font-medium text-gray-700 mb-1"
+        >Property Bedrooms</label
+      >
+      <input
+        type="number"
+        id="bedrooms"
+        placeholder="Number of bedrooms"
+        formControlName="bedrooms"
+        required
+        class="w-full border border-gray-300 rounded-lg shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      />
+      <div
+        *ngIf="
+          propertyForm.get('bedrooms')?.hasError('required') &&
+          propertyForm.get('bedrooms')?.touched
+        "
+        class="text-red-700"
+      >
+        This property needs the number of bedrooms.
+      </div>
+    </div>
+
+    <!-- Property Bathrooms -->
+    <div class="mb-4">
+      <label
+        for="bathrooms"
+        class="block text-sm font-medium text-gray-700 mb-1"
+        >Property Bathrooms</label
+      >
+      <input
+        type="number"
+        id="bathrooms"
+        placeholder="Number of bathrooms"
+        formControlName="bathrooms"
+        required
+        class="w-full border border-gray-300 rounded-lg shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      />
+      <div
+        *ngIf="
+          propertyForm.get('bathrooms')?.hasError('required') &&
+          propertyForm.get('bathrooms')?.touched
+        "
+        class="text-red-700"
+      >
+        This property needs the number of bathrooms.
+      </div>
+    </div>
+
+    <!-- Property Sale Type -->
+    <div class="mb-4">
+      <label
+        for="sale_type"
+        class="block text-sm font-medium text-gray-700 mb-1"
+        >Property Sale Type</label
+      >
+      <select
+        id="sale_type"
+        formControlName="sale_type"
+        required
+        class="w-full border border-gray-300 rounded-lg shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      >
+        <option *ngFor="let sale of sales" [value]="sale">{{ sale }}</option>
+      </select>
+      <div
+        *ngIf="
+          propertyForm.get('sale_type')?.hasError('required') &&
+          propertyForm.get('sale_type')?.touched
+        "
+        class="text-red-700"
+      >
+        This property needs a sale type.
+      </div>
+    </div>
+
+    <!-- Property Home Type -->
+    <div class="mb-4">
+      <label
+        for="home_type"
+        class="block text-sm font-medium text-gray-700 mb-1"
+        >Property Home Type</label
+      >
+      <select
+        id="home_type"
+        formControlName="home_type"
+        required
+        class="w-full border border-gray-300 rounded-lg shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      >
+        <option *ngFor="let home of homes" [value]="home">{{ home }}</option>
+      </select>
+      <div
+        *ngIf="
+          propertyForm.get('home_type')?.hasError('required') &&
+          propertyForm.get('home_type')?.touched
+        "
+        class="text-red-700"
+      >
+        This property needs a home type.
+      </div>
+    </div>
+
+    <button
+      class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+      (click)="goBack()"
+    >
+      Back
+    </button>
+    <button
+      [disabled]="!propertyForm.valid"
+      type="submit"
+      class="bg-transparent text-blue-700 font-semibold py-2 px-4 border border-blue-500 rounded"
+      [ngClass]="{
+        'hover:bg-blue-500 hover:text-white hover:border-transparent':
+          propertyForm.valid,
+        'cursor-not-allowed opacity-50': !propertyForm.valid
+      }"
+    >
+      {{ isUpdateMode ? "Update Property" : "Create Property" }}
+    </button>
+  </form>
+</div>

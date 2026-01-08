@@ -1,0 +1,249 @@
+<app-navbar></app-navbar>
+
+<div
+  class="ml-10 h-[850px] border-l-8 border-[#6B7280] border-b-8 border-b-gray-50 border-r-4 border-r-gray-50 mr-10 flex overflow-hidden"
+>
+  <!-- Sidebar -->
+  <app-sidebar></app-sidebar>
+
+  <!-- Main Content -->
+  <!-- Main Content -->
+  <main class="flex-grow flex flex-col">
+    <!-- Buttons Section -->
+    <div class="w-full flex gap-4 mt-4 ml-4">
+      <button
+        *ngIf="!loggedIn"
+        class="text-gray-600 font-bold bg-white hover:bg-gray-100 border border-gray-600 px-2 py-1 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-500"
+        routerLink="/login"
+      >
+        Login
+      </button>
+      <button
+        *ngIf="loggedIn"
+        class="text-gray-600 font-bold bg-white hover:bg-gray-100 border border-gray-600 px-2 py-1 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-500"
+        (click)="logout()"
+      >
+        Logout
+      </button>
+      <button
+        *ngIf="!loggedIn"
+        class="text-gray-600 font-bold bg-white hover:bg-gray-100 border border-gray-600 px-2 py-1 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-500"
+        routerLink="/register"
+      >
+        Sign Up
+      </button>
+    </div>
+
+    <!-- Welcome Section -->
+    <div class="flex p-4 border-b-2 border-b-gray w-full items-center">
+      <h1 *ngIf="loggedIn" class="mr-auto text-lg text-black">
+        Welcome back {{ username }}!
+      </h1>
+      <div
+        class="ml-auto flex items-center border border-gray-300 rounded-lg w-auto p-2 shadow-md bg-white"
+      >
+        <input
+          type="text"
+          placeholder="Search..."
+          class="border-none outline-none text-black px-2 w-64 bg-white"
+        />
+        <button class="p-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-5 h-5 text-gray-600"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 21l-4.35-4.35M15 11a4 4 0 11-8 0 4 4 0 018 0z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Flexbox Parent -->
+    <div class="flex-grow flex">
+      <!-- New Container Section -->
+      <div class="mt-4 ml-4 w-1/4 sm:w-1/2 md:w-1/3 h-[550px] p-4">
+        <!-- Filters Section -->
+        <div class="mb-4">
+          <select
+            id="filter-cities"
+            class="border text-gray-400 border-gray-300 rounded-md p-2 mb-2 mr-2"
+          >
+            <option [disabled]>Select Cities</option>
+          </select>
+
+          <select
+            id="filter-price"
+            class="border text-gray-400 border-gray-300 rounded-md p-2 mb-2"
+          >
+            <option [disabled]>Price range</option>
+          </select>
+
+          <select
+            id="filter-type"
+            class="border text-gray-400 border-gray-300 rounded-md ml-2 p-2"
+          >
+            <option [disabled]>Type</option>
+          </select>
+        </div>
+
+        <!-- Active Properties Section -->
+        <p
+          class="mt-2 mb-4 font-medium text-lg flex text-gray-600 items-center"
+        >
+          <i class="fas fa-building text-gray-600 mr-2"></i>
+          Active Properties ({{ properties.length }})
+        </p>
+
+        <!-- Property Listing Section -->
+        <div class="overflow-y-auto h-full custom-scrollbar">
+          <div
+            *ngFor="let property of properties"
+            class="mb-4 border border-gray-300 rounded-md p-4 shadow-sm flex"
+            (click)="selectProperty(property)"
+          >
+            <!-- Image Section -->
+            <div class="w-1/4">
+              <img
+                [src]="
+                  property.home_type === 'Apartment' ||
+                  property.home_type === 'Studio'
+                    ? '/estate-app-frontend/assets/apartment2.jpg'
+                    : '/estate-app-frontend/assets/house.jpg'
+                "
+                alt="Property Image"
+                class="rounded-md object-fit"
+              />
+            </div>
+            <!-- Content Section -->
+            <div class="w-3/4 pl-4">
+              <!-- Title and City -->
+              <div class="mb-2">
+                <h2 class="font-semibold text-gray-800">
+                  {{ property.title }}
+                </h2>
+                <p class="text-gray-600 text-sm">{{ property.city }}</p>
+                <!-- Home Type, Bedrooms, Bathrooms -->
+                <div class="flex space-x-4 text-gray-600 text-xs mt-1">
+                  <div>{{ property.home_type }}</div>
+                  <div>{{ property.bedrooms }} Bedrooms</div>
+                  <div>{{ property.bathrooms }} Bathrooms</div>
+                </div>
+              </div>
+
+              <!-- Price and Sale Type -->
+              <div
+                class="flex justify-between items-center mt-auto text-gray-600 text-sm font-medium"
+              >
+                <div>{{ property.sale_type }}</div>
+                <div>{{ property.area | number }} ft²</div>
+                <div>{{ property.price | currency }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detailed View Container -->
+      <div
+        *ngIf="selectedProperty"
+        class="flex-grow p-5 h-full border-l-2 overflow-y-auto"
+      >
+        <!-- Title -->
+        <h2 class="text-xl font-bold text-gray-800 mb-2">
+          {{ selectedProperty.title }}
+        </h2>
+
+        <!-- Address -->
+        <p class="text-base text-gray-600 mb-2">
+          <strong>Address:</strong> {{ selectedProperty.address }},
+          {{ selectedProperty.city }}, {{ selectedProperty.state }},
+          {{ selectedProperty.zipcode }}
+        </p>
+
+        <!-- Image Gallery -->
+        <div class="flex items-center mb-10 ml-10">
+          <!-- Main Image Display -->
+          <img
+            [src]="selectedImage"
+            alt="Main Property Image"
+            class="rounded-md w-2/3 h-72 object-cover shadow-lg mr-4"
+          />
+
+          <!-- Thumbnails (Vertical Alignment) -->
+          <div class="flex flex-col gap-2 ml-4">
+            <img
+              *ngFor="let img of imageGallery"
+              [src]="img"
+              alt="Property Image Thumbnail"
+              class="rounded-md w-24 h-16 object-cover cursor-pointer hover:opacity-75 transition"
+              (click)="selectedImage = img"
+            />
+          </div>
+        </div>
+
+        <!-- Property Details -->
+        <div class="grid grid-cols-2 gap-2 mb-4 text-sm">
+          <p class="text-gray-700 flex items-center">
+            <i class="fas fa-dollar-sign mr-2 text-gray-500"></i>
+            <strong>Price:</strong> {{ selectedProperty.price | currency }}
+          </p>
+          <p class="text-gray-700 flex items-center">
+            <i class="fas fa-ruler-combined mr-2 text-gray-500"></i>
+            <strong>Area:</strong> {{ selectedProperty.area }} ft²
+          </p>
+          <p class="text-gray-700 flex items-center">
+            <i class="fas fa-bed mr-2 text-gray-500"></i>
+            <strong>Bedrooms: </strong> {{ selectedProperty.bedrooms }}
+          </p>
+          <p class="text-gray-700 flex items-center">
+            <i class="fas fa-bath mr-2 text-gray-500"></i>
+            <strong>Bathrooms: </strong> {{ selectedProperty.bathrooms }}
+          </p>
+          <p class="text-gray-700 flex items-center">
+            <i class="fas fa-parking mr-2 text-gray-500"></i>
+            <strong>Parking:</strong> {{ selectedProperty.parking }}
+          </p>
+          <p class="text-gray-700 flex items-center">
+            <i class="fas fa-tags mr-2 text-gray-500"></i>
+            <strong>Sale Type:</strong> {{ selectedProperty.sale_type }}
+          </p>
+          <p class="text-gray-700 flex items-center">
+            <i class="fas fa-home mr-2 text-gray-500"></i>
+            <strong>Home Type:</strong> {{ selectedProperty.home_type }}
+          </p>
+        </div>
+
+        <!-- Description Section -->
+        <div class="mb-4">
+          <h3 class="text-base font-semibold text-gray-800 mb-1">
+            Description
+          </h3>
+          <p class="text-sm text-gray-600">
+            {{ selectedProperty.description }}
+          </p>
+        </div>
+
+        <!-- Book a Tour Button -->
+        <div class="flex justify-end mr-10">
+          <button
+            class="text-gray-600 border border-gray-600 px-4 py-2 rounded-full text-sm hover:bg-gray-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500"
+            routerLink="/book-tour"
+            [state]="{ property: selectedProperty }"
+          >
+            Book a Tour
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<app-footer></app-footer>

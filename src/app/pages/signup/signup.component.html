@@ -1,0 +1,78 @@
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+  <div class="w-full max-w-md bg-white shadow-md rounded-lg">
+    <div class="bg-blue-500 text-white text-center py-4 rounded-t-lg">
+      <h2 class="text-2xl font-bold">Sign Up Form</h2>
+    </div>
+    <div class="p-6">
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="mb-4">
+          <label
+            for="username"
+            class="block text-gray-700 text-sm font-bold mb-2"
+            >Username</label
+          >
+          <input
+            type="text"
+            formControlName="username"
+            id="username"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter your username"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            formControlName="email"
+            id="email"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter your email"
+          />
+        </div>
+        <div class="mb-4">
+          <label
+            for="password"
+            class="block text-gray-700 text-sm font-bold mb-2"
+            >Password</label
+          >
+          <input
+            type="password"
+            formControlName="password"
+            id="password"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter your password"
+          />
+        </div>
+        <div class="mb-4">
+          <label
+            for="confirmPassword"
+            class="block text-gray-700 text-sm font-bold mb-2"
+            >Confirm Password</label
+          >
+          <input
+            type="password"
+            formControlName="confirmPassword"
+            id="confirmPassword"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Confirm your password"
+          />
+        </div>
+        <div class="flex items-center justify-between">
+          <button
+            [disabled]="registrationForm.invalid"
+            type="submit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Sign Up
+          </button>
+          <button
+            routerLink="/login"
+            class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Back
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<div
+  class="p-6 bg-white rounded-lg shadow-lg w-[400px] mx-auto flex flex-col space-y-4"
+>
+  <!-- Title -->
+  <h2 class="text-xl font-bold text-gray-800 text-center">Book a Tour</h2>
+
+  <!-- Display selected property details -->
+  <div class="text-gray-600">
+    <p><strong>Property:</strong> {{ property?.title }}</p>
+    <p><strong>City:</strong> {{ property?.city }}</p>
+    <p><strong>Price:</strong> {{ property?.price | currency }}</p>
+  </div>
+
+  <!-- Date Picker -->
+  <label for="date" class="text-gray-600 font-semibold">Select a Date</label>
+  <input
+    type="date"
+    id="date"
+    class="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300 focus:outline-none"
+    [(ngModel)]="booking.date"
+  />
+
+  <!-- Time Picker -->
+  <label for="time" class="text-gray-600 font-semibold">Select a Time</label>
+  <select
+    id="time"
+    class="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300 focus:outline-none"
+    [(ngModel)]="booking.time"
+  >
+    <option value="" disabled selected>Select a time</option>
+    <option *ngFor="let time of availableTimes" [value]="time">
+      {{ time }}
+    </option>
+  </select>
+
+  <!-- Name Input -->
+  <label for="name" class="text-gray-600 font-semibold">Your Name</label>
+  <input
+    type="text"
+    id="name"
+    class="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300 focus:outline-none"
+    placeholder="Enter your name"
+    [(ngModel)]="booking.name"
+  />
+
+  <!-- Phone Input -->
+  <label for="phone" class="text-gray-600 font-semibold"
+    >Your Phone Number</label
+  >
+  <input
+    type="tel"
+    id="phone"
+    class="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300 focus:outline-none"
+    placeholder="Enter your phone number"
+    [(ngModel)]="booking.phone"
+  />
+
+  <!-- Submit Button -->
+  <button
+    class="w-full bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition"
+    (click)="bookTour()"
+  >
+    Book Now
+  </button>
+
+  <!-- Back Button -->
+  <button
+    class="w-full mt-2 bg-gray-300 text-black font-semibold py-2 rounded-lg hover:bg-gray-400 transition"
+    (click)="goBack()"
+  >
+    Back
+  </button>
+</div>

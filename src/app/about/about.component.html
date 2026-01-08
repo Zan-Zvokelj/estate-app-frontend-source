@@ -1,0 +1,127 @@
+<app-navbar></app-navbar>
+
+<div
+  class="ml-10 h-full border-l-4 border-[#3973e7] border-b-8 border-b-gray-50 border-r-4 border-r-gray-50 mr-10 flex"
+>
+  <!-- Sidebar -->
+  <app-sidebar></app-sidebar>
+  <main class="flex-grow flex justify-center items-center">
+    <!-- Main Content -->
+    <div
+      class="p-8 space-y-6 bg-gradient-to-t border-t-2 border-t-black border-b-4 border-b-black from-gray-200 to-white rounded-lg shadow-lg w-4/5 h-full"
+    >
+      <!-- Mission Section -->
+      <section>
+        <h2 class="text-2xl font-bold mb-4">Our Mission</h2>
+        <p class="text-lg leading-relaxed">
+          At TrueEstate, our mission is to provide exceptional real estate
+          services that exceed client expectations. We are committed to helping
+          you navigate the world of property with ease, offering expert advice,
+          professional guidance, and an extensive portfolio of properties that
+          suit your needs.
+        </p>
+        <div class="mt-4 flex justify-center">
+          <img
+            src="https://images.unsplash.com/39/lIZrwvbeRuuzqOoWJUEn_Photoaday_CSD%20%281%20of%201%29-5.jpg?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Our Mission"
+            class="rounded-lg shadow-xl shadow-black w-[350px] h-[250px]"
+            crossorigin="anonymous"
+          />
+        </div>
+      </section>
+
+      <!-- Who We Are Section -->
+      <section>
+        <h2 class="text-2xl font-bold mb-4">Who We Are</h2>
+        <p class="text-lg leading-relaxed">
+          We are a passionate team of real estate professionals with years of
+          experience. We understand that purchasing or selling property can be
+          overwhelming, so we focus on building trust, providing personalized
+          service, and making the process as smooth as possible for you.
+        </p>
+        <div class="mt-4 flex justify-center">
+          <img
+            src="/estate-app-frontend/assets/teamwork.png"
+            alt="Our Team"
+            class="rounded-lg shadow-xl shadow-black w-[350px] h-[250px]"
+          />
+        </div>
+      </section>
+
+      <!-- Core Values Section -->
+      <section class="p-6 bg-black text-gray-300 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">Our Core Values</h2>
+        <ul class="list-disc pl-6 text-lg space-y-2">
+          <li>
+            <strong>Integrity:</strong> We uphold transparency and honesty in
+            all our interactions.
+          </li>
+          <li>
+            <strong>Customer-Centric:</strong> Our clients are at the heart of
+            everything we do.
+          </li>
+          <li>
+            <strong>Innovation:</strong> We embrace modern tools and technology
+            to serve you better.
+          </li>
+          <li>
+            <strong>Excellence:</strong> We strive to provide the best services
+            with exceptional attention to detail.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Contact Us Section -->
+      <section>
+        <h2 class="text-2xl font-bold mb-4">Contact Us</h2>
+        <p class="text-lg leading-relaxed">
+          We'd love to hear from you! Whether you have a question or want to
+          know more about our services, feel free to get in touch with us. Our
+          team is always here to assist you with any of your real estate needs.
+        </p>
+        <div class="flex space-x-6 mt-4 justify-center">
+          <a
+            routerLink="/support"
+            class="text-lg font-semibold flex items-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6 mr-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 8l7 7 7-7"
+              />
+            </svg>
+            Email Us
+          </a>
+          <a
+            href="tel:+123456789"
+            class="text-lg font-semibold flex items-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6 mr-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 7l3-3m0 0l5 5m-5-5l5 5m-5-5v5m5 0l5 5m0 0l3-3"
+              />
+            </svg>
+            Call Us
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<app-footer></app-footer>
